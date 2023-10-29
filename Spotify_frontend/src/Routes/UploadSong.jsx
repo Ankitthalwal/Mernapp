@@ -13,10 +13,7 @@ const Uploadingcomp = () => {
     const [ulpoadedfilename, setuploadfilename] = useState();
     const Navigate = useNavigate();
     const SubmitSong= async ()=>{
-        //..for only testing purpose
-        //  console.log(name);
-        //  console.log(thumbnail);
-        //  console.log(playlisturl);
+       
         const data ={name,thumbnail,track:playlisturl};
         const response = await makeAuthenticatedPOSTRequest(
             "/song/create",

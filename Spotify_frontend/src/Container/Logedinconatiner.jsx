@@ -126,7 +126,7 @@ const PlaySound =()=>{
                             <Icontxt iconName={"carbon:home"} displayText={"Home"} active={currentactivescreen==="home"} targetLink={"/home"}/>
                             <Icontxt iconName={"iconamoon:search"} displayText={"Search"}  active={currentactivescreen==="search"} targetLink={"/searchpage"}/>
                             <Icontxt iconName={"clarity:library-line"} displayText={"Your Library"} active={currentactivescreen==="library"} targetLink={"/library"} />
-                            <Icontxt iconName={""} displayText={"My Music"} targetLink={"/myMusic" }  active={currentactivescreen==="myMusic"}/>
+                            <Icontxt iconName={"mingcute:music-fill"} displayText={"My Music"} targetLink={"/myMusic" }  active={currentactivescreen==="myMusic"}/>
                         </div>
                         <div className='pt-5'>
                             <Icontxt iconName={"icon-park-outline:add"} displayText={"Create Playlist"} onClick={()=>{setPlaylistModelopen(true)}} />
@@ -187,10 +187,8 @@ const PlaySound =()=>{
                     <div className='w-1/2 h-full flex justify-center  flex-col items-center'>
                         <div className='flex w-1/3 justify-between items-center'>
                             <Icon icon="ph:shuffle" fontSize={27} className='cursor-pointer  text-gray-400 hover:text-white' />
-                            <Icon icon="fluent:previous-16-filled" fontSize={27} className='cursor-pointer   text-gray-400 hover:text-white'  />
                             <Icon icon={ispaused ? "carbon:play-filled" : "carbon:pause-filled"} fontSize={40} className='cursor-pointer  text-gray-400 hover:text-white  ' onClick={togglePause} />
 
-                            <Icon icon="fluent:next-20-filled" fontSize={27} className='cursor-pointer  text-gray-400 hover:text-white' />
                             <Icon icon="ic:outline-repeat" fontSize={27} className='cursor-pointer  text-gray-400 hover:text-white' />
 
 

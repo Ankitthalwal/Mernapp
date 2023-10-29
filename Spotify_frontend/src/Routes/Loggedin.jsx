@@ -1,120 +1,50 @@
-import React from 'react'
-import { Icon } from '@iconify/react';
-import Icontxt from '../Component/shared/Icontxt';
-import Texthover from '../Component/shared/Textwithhover';
-import { Howl, Howler } from 'howler';
-import { useState } from 'react';
+
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+
+import Singlecard from '../Component/shared/Singlecard';
+import { makeAuthenticatedGETRequest } from '../Utils/Serverhelper';
+
 import LoggedinContainer from '../Container/Logedinconatiner';
-const focusdata = [
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-];
-
-const SpotifyPlaylistdata = [
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-];
-const Indiaplaylistdata = [
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-    {
-        title: "peacefull piano",
-        description: "Relaxand indulge with beautiful plano pano",
-    },
-];
 
 
-  const Loggedincomp =()=>{
-        return  (
-            <LoggedinContainer currentactivescreen="home" >
-                <Playlistview titletext="Focus" cardsdata={focusdata} />
-                        <Playlistview titletext="Spotify Playlist" cardsdata={SpotifyPlaylistdata} />
-                        <Playlistview titletext="Top on india" cardsdata={Indiaplaylistdata} />
-             </LoggedinContainer>
-        );
-  };
-const Playlistview = ({ titletext, cardsdata, }) => {
+const Loggedincomp = () => {
+    const [songAllData, SetAllSongData] = useState([]);
+
+
+
+    useEffect(() => {//fetch data one by one
+        const getdata = async () => {
+            const response = await makeAuthenticatedGETRequest("/song/get/allsong");
+            SetAllSongData(response.data);
+        };
+        getdata();
+    }, []);//we give dependency null because after getting one song page will not reload 
+
+
+
     return (
-        <div className='text-white'>
-            <div className='text-2xl font-semibold mb-5'>
-                {titletext}
-            </div>
-            <div className="w-full flex justify-between space-x-4">
-                {
-                    cardsdata.map((item) => {
-                        return <Card title={item.title} description={item.description} />
-                    })
+        <LoggedinContainer currentactivescreen={"myMusic"}>
+
+            <div className='text-white text-xl font-semibold pb-4 pl-2 pt-8'>All Songs</div>
+            <div className='space-y-3 overflow-auto'>
+
+                {songAllData.map((item,i) => {
+                   
+                    return <Singlecard info={item} key={i} PlaySound={() => { }} />
+                })
                 }
 
             </div>
 
-        </div>
-    )
-}
-const Card = ({ title, description }) => {
-    return (
-        <div className='bg-black bg-opacity-60 w-1/5 p-4 rounded-lg'>
-            <div className='pb-4 pt-2'>
-                <img className='w-full rounded-md' src="1.png" alt="label" />
-            </div>
-            <div className="text-white font-semibold py-3">{title}</div>
-            <div className="text-gray-500 text-sm ">{description}</div>
-        </div>
-    )
-}
+        </LoggedinContainer>
+    );
 
+}
 
 export default Loggedincomp;

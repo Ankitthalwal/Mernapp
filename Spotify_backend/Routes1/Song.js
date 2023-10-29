@@ -36,6 +36,17 @@ router.get('/get/mysong', passport.authenticate("jwt", { session: false }),
 )
 
 
+
+//get all song in the database....  form homescreen
+router.get('/get/allsong', passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const songs = await Song.find().populate("artist");//by using.populate we get full info of artist
+    //by using above line we get song list
+    return res.status(200).json({ data: songs });
+  }
+)
+
+
 //all song made by us or by artistid
 router.get('/get/artist/:artistId', passport.authenticate("jwt", { session: false }),
   async (req, res) => {

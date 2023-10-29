@@ -15,10 +15,12 @@ app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:true}));
 const cookieParser = require('cookie-parser');
-
+const dotenv =require('dotenv');
+dotenv.config({path:'./.env'});
 
 //now make a Api url
-mongoose.connect("mongodb+srv://ankitthalwal:5EwSLt1H6CQhsUhk@cluster0.dwgkmh5.mongodb.net/?retryWrites=true&w=majority"
+const Db =process.env.DATABASE;
+mongoose.connect(Db
     , {
         useNewUrlParser: true,
         useUnifiedTopology: true,
