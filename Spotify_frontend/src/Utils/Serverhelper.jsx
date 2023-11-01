@@ -2,7 +2,7 @@ import { backendurl } from "./Config";
 export const makeunauthenticatedPOSTRequest = async (route, body) => {
     //route = api body = body
     //fetch api
-    const response = await fetch(backendurl + route, {
+    const response = await fetch   (backendurl + route, {
         method: "POST",//by default it set is GET request so we need to set it at POST
         headers: {
             "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const makeunauthenticatedPOSTRequest = async (route, body) => {
 export const makeAuthenticatedPOSTRequest = async (route, body) => {
     //take cookies to get token so you can store data in database
     const token = getToken();
-    const response = await fetch(backendurl + route, {
+    const response = await fetch  (backendurl + route, {
         method: "POST",//by default it set is GET request so we need to set it at POST
         headers: {
             "Content-Type": "application/json",

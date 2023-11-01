@@ -19,7 +19,7 @@ const Signup = () => {
     
   //data which we need to send to api
   const signUp = async ()=>{
-    if(email!=confirmEmail){
+    if(email  !== confirmEmail){
       alert("Email can not match please check you email");
     return;
 
@@ -32,6 +32,7 @@ const Signup = () => {
         
         console.log(response);
         const date = new Date();
+
         date.setDate(date.getDate() +30);
         const token = response.token;
         setCookie("token",token,{path: "/",expires: date});//at 5:39 min

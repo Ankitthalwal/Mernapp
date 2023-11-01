@@ -1,7 +1,7 @@
 const express = require('express')();
 const app = express;
 const mongoose = require('mongoose');
-const port = 8080;
+
 const JwtStrategy =require("passport-jwt").Strategy,
 ExtractJwt=require("passport-jwt").ExtractJwt;
 const passport = require('passport');
@@ -17,10 +17,11 @@ app.use(bodyparser.urlencoded({extended:true}));
 const cookieParser = require('cookie-parser');
 const dotenv =require('dotenv');
 dotenv.config({path:'./.env'});
+const BASE_URL = process.env.BASE_URL;
 
 //now make a Api url
-const Db =process.env.DATABASE;
-mongoose.connect(Db
+
+mongoose.connect("mongodb+srv://ankitthalwal:5EwSLt1H6CQhsUhk@cluster0.dwgkmh5.mongodb.net/?retryWrites=true&w=majority"
     , {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -66,8 +67,8 @@ app.use('/playlist',Playlistroutes);
 
 // app.use('/playlist',Playlistroutes);
 
-app.listen(port, () => {
-    console.log("port is running on 8000");
+app.listen(BASE_URL, () => {
+    console.log("port is running on 8080");
 }) 
 
 
