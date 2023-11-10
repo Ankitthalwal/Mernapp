@@ -130,7 +130,7 @@ const PlaySound =()=>{
                         </div>
                         <div className='pt-5'>
                             <Icontxt iconName={"icon-park-outline:add"} displayText={"Create Playlist"} onClick={()=>{setPlaylistModelopen(true)}} />
-                            <Icontxt iconName={"solar:chat-square-like-linear"} displayText={"Liked Songs"} />
+                          
                         </div>
                     </div>
 
@@ -152,9 +152,7 @@ const PlaySound =()=>{
                     <div className="navbar  w-fulll h-1/10 bg-black bg-opacity-30  items-center justify-end flex">
                         <div className="flex w-1/2 h-full">
                             <div className='w-3/5 flex justify-around items-center'>
-                                <Texthover displayText={"Premium"} />
-                                <Texthover displayText={"Support"} />
-                                <Texthover displayText={"Logout"} />
+                             
                                 <div className="   border-r  border-white h-1/2"></div>
                             </div>
                             <div className="w-2/5 justify-around h-full items-center flex">
